@@ -68,7 +68,9 @@ striped">
 <td class="text-semibold">{{coments.usuario}}</td>
 <td class="muted">{{coments.mensaje}}</td>
 <td> Editar</td>
-<td> Eliminar</td>
+<td class="text-center">
+<a href="{%url 'Eliminar' coments.id%}">Eliminar</a>
+</td>
 </tr>
 {% endfor %}
 </tbody>
