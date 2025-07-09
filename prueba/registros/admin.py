@@ -11,6 +11,16 @@ class AdministrarModelo(admin.ModelAdmin):
     date_hierarchy = 'created'
     list_filter = ('carrera', 'turno')
 
+    def get_readonly_fields(self, request, obj=None):
+#si el usuario pertenece al grupo de permisos "Usuario"
+        if request.user.groups.filter(name="Usuarios").exists():
+#Bloquea los campos
+            return ('created', 'updated', 'matricula','carrera', 'turno')
+#Cualquier otro usuario que no pertenece al grupo "Usuario"
+        else:
+#Bloquea los campos
+            return ('created', 'updated')
+
 admin.site.register(Alumnos, AdministrarModelo)
 
 class AdministrarComentarios(admin.ModelAdmin):
@@ -18,6 +28,17 @@ class AdministrarComentarios(admin.ModelAdmin):
     search_fields = ('id', 'created')
     date_hierarchy = 'created'
     readondly_fields = ('created', 'id')
+
+
+    def get_readonly_fields(self, request, obj=None):
+#si el usuario pertenece al grupo de permisos "Usuario"
+        if request.user.groups.filter(name="firma0907").exists():
+#Bloquea los campos
+            return ('created', 'alumno')
+#Cualquier otro usuario que no pertenece al grupo "Usuario"
+        else:
+#Bloquea los campos
+            return ('created')
 
 admin.site.register(Comentario, AdministrarComentarios)
 
