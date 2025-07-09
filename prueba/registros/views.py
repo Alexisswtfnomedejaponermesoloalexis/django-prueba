@@ -31,16 +31,15 @@ def contacto(request):
 #Indicamos el lugar donde se renderizará el resultado de esta vista
 
 def comentarios(request):
-    coments=ComentarioContactos.objects.all()
-    return render(request, "registros/comentarios.html", {'comentarios':coments})
+    comentarios=ComentarioContactos.objects.all()
+    return render(request, "registros/comentarios.html", {'comentarios':comentarios})
 
 def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEliminacion.html'):
     comentario = get_object_or_404(ComentarioContactos, id=id)
     if request.method=='POST':
-        comentarios.delete()
+        comentario.delete()
         comentarios=ComentarioContactos.objects.all()
-        return render(request,"registros/consultaContacto.html",
-                                        {'comentarios':comentarios})
+        return render(request,"registros/comentarios.html",{'comentarios':comentarios})
 
     return render(request, confirmacion, {'object':comentario})
 

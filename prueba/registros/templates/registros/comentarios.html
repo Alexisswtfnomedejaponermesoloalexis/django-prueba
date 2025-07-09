@@ -60,16 +60,16 @@ striped">
 
 </thead>
 <tbody>
-{% for coments in comentarios %}
+{% for comentario in comentarios %}
 
 <tr>
 
 
-<td class="text-semibold">{{coments.usuario}}</td>
-<td class="muted">{{coments.mensaje}}</td>
+<td class="text-semibold">{{comentario.usuario}}</td>
+<td class="muted">{{comentario.mensaje}}</td>
 <td> Editar</td>
 <td class="text-center">
-<a href="{%url 'Eliminar' coments.id%}">Eliminar</a>
+<a href="{%url 'Eliminar' comentario.id%}">Eliminar</a>
 </td>
 </tr>
 {% endfor %}
