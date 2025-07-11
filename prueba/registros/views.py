@@ -4,6 +4,9 @@ from .forms import ComentarioContactoForm
 from .models import ComentarioContactos
 from django.shortcuts import get_object_or_404
 import datetime
+from django.contrib import messages
+from .models import Archivos
+from .forms import FormArchivos
 #Accedemos al modelo Alumnos que contiene la estructura de la tabla.
 # Create your views here.
 def registros(request):
@@ -44,6 +47,34 @@ def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEli
 
     return render(request, confirmacion, {'object':comentario})
 
+
+
+def archivos(request):
+    if request.method == 'POST':
+        form = FormArchivos(request.POST, request.FILES)
+        if form.is_valid():
+            titulo = request.POST['titulo']
+            descripcion = request.POST['descripcion']
+            archivo = request.FILES['archivo']
+            insert = Archivos(titulo=titulo, descripcion=descripcion,
+            archivo=archivo)
+            insert.save()
+            return render(request,"registros/archivos.html")
+        else:
+
+            messages.error(request, "Error al procesar el formulario")
+    else:
+        return render(request,"registros/archivos.html",{'archivo':Archivos})
+
+
+
+
+
+
+
+
+#####################################################################################################3
+
 def consultar1(request):
     #con una sola consulta
     alumnos=Alumnos.objects.filter(carrera="TI")
@@ -71,6 +102,7 @@ def consultar3(request):
 # __gte : MAYOR O IGUAL QUE
 # __in : LOS QUE COINCIDAN CON LOS PARAMETROS ASIGNADOS
 
+{}
 def consultar4(request):
     alumnos=Alumnos.objects.filter(turno__contains="Vesp")
     return render(request, "registros/consultas.html", {'alumnos':alumnos})

@@ -33,6 +33,11 @@ urlpatterns = [
     path('eliminarComentario/<int:id>/',
         views_registros.eliminarComentarioContacto,
             name='Eliminar'),
+
+    path('subir',views_registros.archivos,name="Subir"),
+    
+
+######################################################################
             #CONSULTAS
     path('consultas1', views_registros.consultar1,name="Consultas"),
     path('consultas2', views_registros.consultar2,name="Consultas"),
