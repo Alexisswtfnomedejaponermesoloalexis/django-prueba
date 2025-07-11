@@ -46,7 +46,7 @@ class ComentarioContactos(models.Model):
     def __str__(self):
         return self.mensaje
 #Indica que se mostrára el mensaje como valor en la tabla
-  
+  ##coment
 
 class Archivos(models.Model):
     id = models.AutoField(primary_key=True)
