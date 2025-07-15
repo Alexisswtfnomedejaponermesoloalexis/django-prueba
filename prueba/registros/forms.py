@@ -18,7 +18,7 @@ class FormArchivos(ModelForm):
         model=Archivos
         fields = ('titulo', 'descripcion', 'archivo')
         widgets = {
-            'archivo': ClearableFileInput
+            'archivo': CustomClearableFileInput
         }
 
         
