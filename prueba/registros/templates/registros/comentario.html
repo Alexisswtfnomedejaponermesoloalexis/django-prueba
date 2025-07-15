@@ -1,0 +1,90 @@
+{% extends "inicio/encabezado.html" %}
+{% block titulo %}Comentarios {% endblock %}
+
+{% block imagen%}
+	{%load static%}
+	{%static 'inicio/images/registrar.png'%}
+{% endblock%}
+
+
+{% block titulo_principal %}
+	COMENTS <span> COMENTARIOS </span>
+{% endblock %}
+
+
+{% block contenido %}
+<!-- Contenido Principal-->
+	 	
+
+
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+					<h3>Comentarios
+				    <small>Lista de Comentarios </small></h3>
+				</div>
+
+				
+			</div>
+
+			{% block url %}
+
+<div class="breadcrumb-line">
+		<ul class="breadcrumb">
+			<a href="{%url 'Comentarios'%}">
+				{%if request.path == '/' %}
+					Comentarios
+				{%else%}
+					Comentarios{{request.path}}
+				{%endif%}
+			</a>
+		
+		</ul>
+	</div>
+{% endblock %}
+
+<!-- Tabla de Alumnos -->
+
+<table class="table table-bordered table-
+striped">
+
+<thead>
+<tr>
+
+<th>Usuario</th>
+<th>Mensaje</th>
+<th>Editar</th>
+<th>Eliminar</th>
+
+</tr>
+
+</thead>
+<tbody>
+{% for coments in comentarios %}
+
+<tr>
+
+
+<td class="text-semibold">{{coments.usuario}}</td>
+<td class="muted">{{coments.mensaje}}</td>
+
+<td> 	<a href="{%url 'ConsultaIndividual' coments.id%}">Editar</a>
+</td>
+
+
+<td class="text-center">
+	<a href="{%url 'Eliminar' coments.id%}">Eliminar</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<!-- /Tabla de alumnos -->
+
+			<!-- /Encabezado-->
+             
+
+
+		</div>
+		<!-- /Contenido Principal-->
+{% endblock %}

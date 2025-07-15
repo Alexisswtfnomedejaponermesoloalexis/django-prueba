@@ -8,7 +8,7 @@
 
 
 {% block titulo_principal %}
-	Home <span> Inicio </span>
+	Principal <span> DSM </span>
 {% endblock %}
 
 
@@ -57,18 +57,14 @@ striped">
 <th>Carrera</th>
 <th>Turno</th>
 
-</tr> 
+</tr>
 
 </thead>
 <tbody>
-{% for alumno in alumnos %}
-
+    {% for alumno in alumnos %}
 <tr>
-
 <td class="text-center">
-
 <img src="{{alumno.imagen.url}}" alt="" class="img-media">
-
 </td>
 <td class="text-semibold">{{alumno.matricula}}</td>
 <td class="muted">{{alumno.nombre}}</td>
@@ -86,4 +82,6 @@ striped">
 
 		</div>
 		<!-- /Contenido Principal-->
+
+		
 {% endblock %}
