@@ -86,3 +86,14 @@ def archivos(request):
 
     else: 
      return render(request, "registros/archivos.html", {'archivo': Archivos})
+    
+    
+####################################################################################################################3
+
+#16/07/2025 CONSULTAS DIRECTAS CON SQL 
+
+def consultasSQL(request):
+
+    alumnos = Alumnos.objects.raw('SELECT id, matricula,nombre, carrera, turno, imagen FROM registros_alumnos WHERE carrera="TI" ORDER BY turno DESC')
+
+    return render(request,"registros/consultas.html", {'alumnos':alumnos})

@@ -41,7 +41,8 @@ urlpatterns = [
 
     path('subir', views_registros.archivos, name="Subir"),
 
-
+###############################################################################################
+path('consultasSQL',views_registros.consultasSQL,name="sql"),
 
     
 ]

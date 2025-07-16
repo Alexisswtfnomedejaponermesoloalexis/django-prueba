@@ -49,4 +49,5 @@ def registrar(request):
     form = ComentarioContactoForm() # type: ignore
 #Si algo sale mal se reenvian al formulario los datos ingresados
     return render(request,'registros/contacto.html',{'form':form})
+
         
