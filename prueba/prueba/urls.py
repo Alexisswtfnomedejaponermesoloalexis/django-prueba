@@ -43,8 +43,7 @@ urlpatterns = [
 
 ###############################################################################################
 path('consultasSQL',views_registros.consultasSQL,name="sql"),
-
-    
+path ('seguridad', views_registros.seguridad, name="Seguridad"),
 ]
 
 

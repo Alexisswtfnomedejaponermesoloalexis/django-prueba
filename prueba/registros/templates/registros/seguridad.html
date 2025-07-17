@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <form action="" method="GET">
+            Nombre:
+            <input type="text" name="nombre" id="nombre"/>
+                
+            <input type="submit" value="buscar"/>
+           
+        </form>
+        <h2> Resultado: {{ nombre|safe }}</h2>
+        <!-- busqueda-->
+         <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            var nombreBuscado = urlParams.get('nombre');
+            if (nombreBuscado){
+                document.getElementById("resultado").innerHTML = "Resultado: " + nombreBuscado;
+            } 
+            </script>
+    <!-- Fin Busqueda-->
+    </body>
+    </html>
+
